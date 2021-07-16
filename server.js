@@ -3,9 +3,6 @@ projectData = {};
 
 // Configs
 const port = 5000;
-const baseURL = 'https://community-open-weather-map.p.rapidapi.com/find?q=';
-const apiKey = '579e88204cmsh26eb0438bc48772p1cef4cjsn46fb89bef9b6';
-const apiHost = 'community-open-weather-map.p.rapidapi.com';
 
 // Express to run server and routes
 const express = require('express');
@@ -41,3 +38,4 @@ function listen() {
 // Callback function to complete GET '/all'
 
 // Post Route
+  
