@@ -100,9 +100,9 @@ async function getData (url='') {
 
 // Change UI function
 function changeUI(response) {
-    console.log(response);
+    
     const lastResponse = response[response.length - 1];
-    console.log(lastResponse);
+    
     let date = document.getElementById('date');
     let temp = document.getElementById('temp');
     let userData = document.getElementById('content');

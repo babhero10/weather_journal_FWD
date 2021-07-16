@@ -39,7 +39,6 @@ app.get('/all', getDataAll);
 // Callback function to complete GET '/all'
 function getDataAll(request, response) {
     response.send(projectData);
-    console.log(projectData);
 }
 
 // Post Route

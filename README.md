@@ -14,7 +14,7 @@ All required modules will be found in package.json and you can install it by usi
 `npm install`
 
 ## Required modules
-`Express`, `body-pasers` and `CORS` you can download all of them by use the command `npm install`
+`Express`, `body-pasers` and `CORS` you can download all of them by use the command `npm install` and it will print `Server running on port ...` when started
 
 ## Used API
  [OpenWeatherMap](https://rapidapi.com/community/api/open-weather-map?utm_source=google&utm_medium=cpc&utm_campaign=Alpha&utm_term=openweathermap_e&gclid=CjwKCAjw3MSHBhB3EiwAxcaEu1f6pi5NnP0m5oebTJ_G0MrQ5qTOSc4nwgcQtgerlIxnV3zl6dSnJhoCnksQAvD_BwE)
