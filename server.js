@@ -44,5 +44,5 @@ function getDataAll(request, response) {
 // Post Route
 app.post('/addData', (request, response) => {
     projectData.push(request.body);
-    response.send("ok!");
+    response.send(request.body);
 });
