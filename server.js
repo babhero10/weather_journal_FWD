@@ -37,9 +37,11 @@ function listen() {
 app.get('/all', getDataAll);
 
 // Callback function to complete GET '/all'
-function getDataAll(require, response) {
+function getDataAll(request, response) {
     response.send(projectData);
 }
 
 // Post Route
-  
+app.post('/addData', (request, response) => {
+    projectData.push(request.body);
+});
