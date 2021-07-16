@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-const projectData = {};
+let projectData = [];
 
 // Configs
 const port = 5000;
@@ -39,9 +39,11 @@ app.get('/all', getDataAll);
 // Callback function to complete GET '/all'
 function getDataAll(request, response) {
     response.send(projectData);
+    console.log(projectData);
 }
 
 // Post Route
 app.post('/addData', (request, response) => {
     projectData.push(request.body);
+    response.send("ok!");
 });
