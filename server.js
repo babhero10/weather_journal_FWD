@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-let projectData = [];
+let projectData = {};
 
 // Configs
 const port = 5000;
@@ -42,7 +42,17 @@ function getDataAll(request, response) {
 }
 
 // Post Route
-app.post('/addData', (request, response) => {
-    projectData.push(request.body);
-    response.send(request.body);
-});
+app.post('/addData', addData)
+
+function addData (request, response) {
+    let data = request.body;
+    
+    console.log('server side data ', data);
+    
+    projectData["date"] = data.date;
+    projectData["temp"] = data.temp;
+    projectData["feel"] = data.feeling;
+
+    response.send(projectData);
+    
+}

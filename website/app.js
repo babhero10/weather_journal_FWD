@@ -1,4 +1,5 @@
 /* Global Variables */
+const units = '&units=metric'
 
 // Personal API Key for OpenWeatherMap API
 const baseURL = 'https://community-open-weather-map.p.rapidapi.com/find?q=';
@@ -34,24 +35,19 @@ function generate(event) {
         // Create a new date instance dynamically with JS
         let d = new Date();
         let date = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`;
-
-        const userResponse = [zipCode, feeling];
         
-        const newData = {temp, date, userResponse};
+        const newData = {temp, date, feeling};
         
         postData(`http://localhost:5000/addData`, newData)
         .then(() => {
-            getData('http://localhost:5000/all')
-            .then((response) => {
-                changeUI(response);
-            });
+            changeUI();
         });
     });
 }
 
 /* Function to GET Web API Data*/
 async function getDataFromAPI (zipCode) {
-   let response = await fetch(`${baseURL}${zipCode}`, {
+   let response = await fetch(`${baseURL}${zipCode}${units}`, {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": apiKey,
@@ -99,15 +95,22 @@ async function getData (url='') {
 }
 
 // Change UI function
-function changeUI(response) {
-    
-    const lastResponse = response[response.length - 1];
-    
-    let date = document.getElementById('date');
-    let temp = document.getElementById('temp');
-    let userData = document.getElementById('content');
+async function changeUI() {
+    const response = await fetch('http://localhost:5000/all');
 
-    date.innerHTML = "Date: " + lastResponse.date;
-    temp.innerHTML = "Temperature: " + lastResponse.temp+"&deg;F";
-    userData.innerHTML = `Zip code: ${lastResponse.userResponse[0]}<br/>Feeling: ${lastResponse.userResponse[1]}`;
+    try {
+        const allData = await response.json();
+    
+        let date = document.getElementById('date');
+        let temp = document.getElementById('temp');
+        let userData = document.getElementById('content');
+    
+        date.innerHTML = "Date: " + allData.date;
+        temp.innerHTML = "Temperature: " + allData.temp+"&deg;C";
+        userData.innerHTML = `Feeling: ${allData.feel}`;
+        
+    } catch(error) {
+        alert('Something went wrong!');
+        console.log(`Error: ${error}`);
+    }
 }
